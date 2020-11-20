@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><rests xmlns="http://camel.apache.org/schema/spring"><restConfiguration component="servlet"/>
+    <rest path="/api">
+        <get id="findPets" produces="application/json,application/json" uri="/pets">
+            <description>Returns all pets from the system that the user has access to
+</description>
+            <param arrayType="string" collectionFormat="multi" dataType="array" description="tags to filter by" name="tags" required="false" type="query"/>
+            <param dataType="integer" description="maximum number of results to return" name="limit" required="false" type="query"/>
+            <to uri="direct:findPets"/>
+        </get>
+        <post consumes="application/json" id="addPet" produces="application/json,application/json" uri="/pets">
+            <description>Creates a new pet in the store.  Duplicates are allowed</description>
+            <param description="Pet to add to the store" name="body" required="true" type="body"/>
+            <to uri="direct:addPet"/>
+        </post>
+        <get id="findPetById" produces="application/json,application/json" uri="/pets/{id}">
+            <description>Returns a user based on a single ID, if the user does not have
+access to the pet</description>
+            <param dataType="integer" description="ID of pet to fetch" name="id" required="true" type="path"/>
+            <param dataType="integer" description="Pet identifier" name="id" required="true" type="path"/>
+            <to uri="direct:findPetById"/>
+        </get>
+        <delete id="deletePet" produces="application/json" uri="/pets/{id}">
+            <description>deletes a single pet based on the ID supplied</description>
+            <param dataType="integer" description="ID of pet to delete" name="id" required="true" type="path"/>
+            <param dataType="integer" description="Pet identifier" name="id" required="true" type="path"/>
+            <to uri="direct:deletePet"/>
+        </delete>
+    </rest>
+</rests>

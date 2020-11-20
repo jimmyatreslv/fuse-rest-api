@@ -107,6 +107,9 @@
             <artifactId>camel-swagger-java-starter</artifactId>
         </dependency>
 
+        
+
+
         <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -182,6 +185,19 @@
                     </execution>
                 </executions>
             </plugin>
+
+             <!-- Generator Plugin -->
+             <plugin>
+               <groupId>org.apache.camel</groupId>
+               <artifactId>camel-restdsl-openapi-plugin</artifactId>
+               <version>3.4.4</version>
+                <configuration>
+                <specificationUri>${project.basedir}/src/spec/sample_api.yaml</specificationUri>
+                <fileName>sample_api_camel.xml</fileName>
+                <outputDirectory>src/main/resources/spring</outputDirectory>    
+              </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

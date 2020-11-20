@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:util="http://www.springframework.org/schema/util"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                    http://www.springframework.org/schema/util
+                    http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+<bean id="xhelloBean" class="com.redhat.fuse.boosters.rest.beans.HelloBean" />
+<util:list id="PetList" list-class="java.util.ArrayList">
+   <ref bean="Pet"/>
+</util:list>
+<util:map id="Pet" map-class="java.util.HashMap">
+   <entry key="name" value="Charlie"/>
+   <entry key="age" value="2"/>
+   <entry key="contact" value="765483921"/>
+</util:map>
+</beans>
